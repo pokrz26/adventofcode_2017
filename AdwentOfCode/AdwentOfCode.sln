@@ -3,13 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day1_InverseCaptcha", "Day1_InverseCaptcha\Day1_InverseCaptcha.fsproj", "{91196040-727A-4F4C-A0C9-F9FD1FBF3B24}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day01_InverseCaptcha", "Day1_InverseCaptcha\Day01_InverseCaptcha.fsproj", "{91196040-727A-4F4C-A0C9-F9FD1FBF3B24}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day2_CorruptionChecksum", "Day2_CorruptionChecksum\Day2_CorruptionChecksum.fsproj", "{D5A80CE9-0E1B-4E9E-8BD5-CA9F45FDA704}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day02_CorruptionChecksum", "Day2_CorruptionChecksum\Day02_CorruptionChecksum.fsproj", "{D5A80CE9-0E1B-4E9E-8BD5-CA9F45FDA704}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day3_SpiralMemory", "Day3_SpiralMemory\Day3_SpiralMemory.fsproj", "{CDE9254C-8667-440D-B7FA-375405ECE7D6}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day03_SpiralMemory", "Day3_SpiralMemory\Day03_SpiralMemory.fsproj", "{CDE9254C-8667-440D-B7FA-375405ECE7D6}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day4_HighEntropyPassphrases", "Day4_HighEntropyPassphrases\Day4_HighEntropyPassphrases.fsproj", "{F3436800-494E-4A2D-B140-B39288FF537D}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day04_HighEntropyPassphrases", "Day4_HighEntropyPassphrases\Day04_HighEntropyPassphrases.fsproj", "{F3436800-494E-4A2D-B140-B39288FF537D}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day05_AMazeOfTwistyTrampolinesAllAlike", "Day5_AMazeOfTwistyTrampolinesAllAlike\Day05_AMazeOfTwistyTrampolinesAllAlike.fsproj", "{FD472B3B-28EB-4D32-9A85-83F258CEEDE3}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day11_HexEd", "Day11_HexEd\Day11_HexEd.fsproj", "{B84D0E98-4B60-42B9-B0C5-8D66D96C2B37}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day10_KnotHash", "Day10_KnotHash\Day10_KnotHash.fsproj", "{B51DE63C-3C92-4477-85E9-826C863D95AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{F3436800-494E-4A2D-B140-B39288FF537D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3436800-494E-4A2D-B140-B39288FF537D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3436800-494E-4A2D-B140-B39288FF537D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD472B3B-28EB-4D32-9A85-83F258CEEDE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD472B3B-28EB-4D32-9A85-83F258CEEDE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD472B3B-28EB-4D32-9A85-83F258CEEDE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD472B3B-28EB-4D32-9A85-83F258CEEDE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B84D0E98-4B60-42B9-B0C5-8D66D96C2B37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B84D0E98-4B60-42B9-B0C5-8D66D96C2B37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B84D0E98-4B60-42B9-B0C5-8D66D96C2B37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B84D0E98-4B60-42B9-B0C5-8D66D96C2B37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B51DE63C-3C92-4477-85E9-826C863D95AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B51DE63C-3C92-4477-85E9-826C863D95AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B51DE63C-3C92-4477-85E9-826C863D95AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B51DE63C-3C92-4477-85E9-826C863D95AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
