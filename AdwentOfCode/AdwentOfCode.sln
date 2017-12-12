@@ -21,6 +21,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day12_DigitalPlumber", "Day
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day09_StreamProcessing", "Day09_StreamProcessing\Day09_StreamProcessing.fsproj", "{5D561B8F-A1C3-4E8B-8D9D-4796A069E1CD}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day08_IHeardYouLikeRegisters", "Day08_IHeardYouLikeRegisters\Day08_IHeardYouLikeRegisters.fsproj", "{352C4308-251D-4A98-B55F-6A2D177CD588}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{5D561B8F-A1C3-4E8B-8D9D-4796A069E1CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D561B8F-A1C3-4E8B-8D9D-4796A069E1CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D561B8F-A1C3-4E8B-8D9D-4796A069E1CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{352C4308-251D-4A98-B55F-6A2D177CD588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{352C4308-251D-4A98-B55F-6A2D177CD588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{352C4308-251D-4A98-B55F-6A2D177CD588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{352C4308-251D-4A98-B55F-6A2D177CD588}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
