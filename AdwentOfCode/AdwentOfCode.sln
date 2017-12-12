@@ -23,6 +23,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day09_StreamProcessing", "D
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day08_IHeardYouLikeRegisters", "Day08_IHeardYouLikeRegisters\Day08_IHeardYouLikeRegisters.fsproj", "{352C4308-251D-4A98-B55F-6A2D177CD588}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day06_MemoryRellocation", "Day06_MemoryRellocation\Day06_MemoryRellocation.fsproj", "{8CE15B05-6974-49E7-9AA2-17CD7E3844CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{352C4308-251D-4A98-B55F-6A2D177CD588}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{352C4308-251D-4A98-B55F-6A2D177CD588}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{352C4308-251D-4A98-B55F-6A2D177CD588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CE15B05-6974-49E7-9AA2-17CD7E3844CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CE15B05-6974-49E7-9AA2-17CD7E3844CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CE15B05-6974-49E7-9AA2-17CD7E3844CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CE15B05-6974-49E7-9AA2-17CD7E3844CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
