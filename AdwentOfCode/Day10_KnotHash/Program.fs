@@ -1,4 +1,5 @@
 ﻿open System
+open System.Text
 
 // ------------------------------------------------------------------------------
 // ----------------------------------- Part 1 -----------------------------------
@@ -46,10 +47,7 @@
 let part1 = 
     let input = "192,69,168,160,78,1,166,28,0,83,198,2,254,255,41,12".Split [|','|] |> Seq.map (fun i -> Convert.ToInt32 i)
     let list = [|for i in 0 .. 255 -> i|]
-
-    //let input = "3, 4, 1, 5".Split [|','|] |> Seq.map (fun i -> Convert.ToInt32 i)
-    //let list = [|for i in 0 .. 4 -> i|]
-    
+   
     let listLength = Array.length list
     let mutable skipSize = 0
     let mutable index = 0
@@ -102,6 +100,7 @@ part1
 //1,2,4 becomes 63960835bcdc130f0b66d7ff4f6a5a8e.
 //Treating your puzzle input as a string of ASCII characters, what is the Knot Hash of your puzzle input? Ignore any leading or trailing whitespace you might encounter.
 
+//Your puzzle answer was 1c46642b6f2bc21db2a2149d0aeeae5d.
 let part2 = 
     let input = ("192,69,168,160,78,1,166,28,0,83,198,2,254,255,41,12" |> Seq.map (fun i -> (int32)i) |> Seq.toList) @ [17; 31; 73; 47; 23]
     let list = [|for i in 0 .. 255 -> i|]
@@ -118,16 +117,18 @@ let part2 =
             index <- index + length + skipSize
             skipSize <- skipSize + 1
 
-    let denseHash = [|for i in 0 .. 16 -> 0|]
+    let denseHash = [|for i in 0 .. 15 -> 0|]
 
     for i = 0 to 15 do
-        for j = 0 to 15 do
-            if j < 16 then
-                denseHash.[j] <- list.[j + i * 16]
-            else
-                denseHash.[j] <- denseHash.[j] ^^^ list.[j + i * 16]
+        denseHash.[i] <- list.[i * 16]
+        for j = i * 16 + 1 to i * 16 + 15 do
+            denseHash.[i] <- denseHash.[i] ^^^ list.[j]
 
-    printfn "Part2 result: %i" (list.[0] * list.[1])
+    let stringBuilder = new StringBuilder()
+    for elem in denseHash do
+        stringBuilder.Append (elem.ToString("X2")) |> ignore
+
+    printfn "Part2 result: %s" (stringBuilder.ToString())
 
 part2
 
