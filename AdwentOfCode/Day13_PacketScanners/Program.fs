@@ -324,6 +324,8 @@ part1
 
 //What is the fewest number of picoseconds that you need to delay the packet to pass through the firewall without being caught?
 
+//Your puzzle answer was 3903378
+
 let part2 = 
     let lines = File.ReadAllLines "input.txt" |> Seq.toArray
     let maxValue = Convert.ToInt32 ((lines.[Array.length lines - 1].Split [|':'|]).[0].Trim())

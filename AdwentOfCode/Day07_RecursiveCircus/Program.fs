@@ -135,28 +135,55 @@ let part2 =
         neighbourList
 
     let getRootsTable (input : Dictionary<string, Tuple<int, string[]>>) =
-        let result = new Dictionary<string, int>()
+        let result = new Dictionary<string, bool>()
         for keyPair in input do
-            result.Add(keyPair.Key, 0)
+            result.Add(keyPair.Key, true)
         result
 
     let input = getInput
     let roots = getRootsTable input
 
     for e in input do
-        let (programWeight, childs) = e.Value
-        if Array.length childs <> 0 then
-            roots.[e.Key] <- programWeight
+        let (_, childs) = e.Value
         for child in childs do
-            let (childProgramWeight, _) = input.[child]
-            roots.[e.Key] <- roots.[e.Key] - childProgramWeight
+            roots.[child] <- false;
 
-    let mutable result = ""
+    let mutable root = ""
     for keyPair in roots do
-        if keyPair.Value <> 0 then
-            result <- keyPair.Key
+        if keyPair.Value then
+            root <- keyPair.Key
 
-    printfn "Part 2 result: %s" result
+    let rec getWeightSum root =
+        let (weight, childs) = input.[root]
+        if Array.length childs = 0 then
+            weight
+        else
+            let mutable result = 0
+            for child in childs do
+                result <- result + getWeightSum child
+            result + weight
+
+    let mutable unbalancedNode = ""
+    let mutable unbalancedMaxWeightSum = 0
+    let mutable unbalancedMinWeightSum = 0
+
+    let rec findUnbalancedNode root = 
+        let (_, childs) = input.[root]
+        let weightsSum = [|for child in childs -> (child, getWeightSum child)|]
+        let maxWeightSum = weightsSum |> Array.map (fun (_, y) -> y) |> Array.max
+        let minWeightSum = weightsSum |> Array.map (fun (_, y) -> y) |> Array.min
+
+        if maxWeightSum <> minWeightSum then
+            let index = weightsSum |> Array.findIndex(fun (_, y) -> y = maxWeightSum)
+            unbalancedNode <- childs.[index]
+            unbalancedMaxWeightSum <- minWeightSum
+            unbalancedMinWeightSum <- maxWeightSum
+            findUnbalancedNode unbalancedNode
+        
+    findUnbalancedNode root
+    let (unbalancedWeight, _) = input.[unbalancedNode]
+
+    printfn "tmp %i" (unbalancedWeight - Math.Abs(unbalancedMaxWeightSum - unbalancedMinWeightSum))
 
 part2
 
