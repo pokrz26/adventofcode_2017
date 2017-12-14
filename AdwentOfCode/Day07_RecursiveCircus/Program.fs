@@ -87,12 +87,9 @@ let part1 =
         for child in e.Value do
             roots.[child] <- false;
 
-    let mutable result = ""
-    for keyPair in roots do
-        if keyPair.Value then
-            result <- keyPair.Key
+    let result = roots |> Seq.find (fun e -> e.Value)
 
-    printfn "Part 1 result: %s" result
+    printfn "Part 1 result: %s" result.Key
 
 part1
 
@@ -123,6 +120,8 @@ part1
 
 //Given that exactly one program is the wrong weight, what would its weight need to be to balance the entire tower?
 
+//Your puzzle answer was 2310.
+
 let part2 =
     let getInput = 
         let neighbourList = new Dictionary<string, Tuple<int, string[]>>()
@@ -148,10 +147,7 @@ let part2 =
         for child in childs do
             roots.[child] <- false;
 
-    let mutable root = ""
-    for keyPair in roots do
-        if keyPair.Value then
-            root <- keyPair.Key
+    let root = (roots |> Seq.find (fun e -> e.Value)).Key
 
     let rec getWeightSum root =
         let (weight, childs) = input.[root]
@@ -174,8 +170,7 @@ let part2 =
         let minWeightSum = weightsSum |> Array.map (fun (_, y) -> y) |> Array.min
 
         if maxWeightSum <> minWeightSum then
-            let index = weightsSum |> Array.findIndex(fun (_, y) -> y = maxWeightSum)
-            unbalancedNode <- childs.[index]
+            unbalancedNode <- weightsSum |> Array.find (fun (_, y) -> y = maxWeightSum) |> (fun (x, _) -> x)
             unbalancedMaxWeightSum <- minWeightSum
             unbalancedMinWeightSum <- maxWeightSum
             findUnbalancedNode unbalancedNode
@@ -183,7 +178,7 @@ let part2 =
     findUnbalancedNode root
     let (unbalancedWeight, _) = input.[unbalancedNode]
 
-    printfn "tmp %i" (unbalancedWeight - Math.Abs(unbalancedMaxWeightSum - unbalancedMinWeightSum))
+    printfn "Part2 result %i" (unbalancedWeight - Math.Abs(unbalancedMaxWeightSum - unbalancedMinWeightSum))
 
 part2
 
