@@ -31,6 +31,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day13_PacketScanners", "Day
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day14_DiskDefragmentation", "Day14_DiskDefragmentation\Day14_DiskDefragmentation.fsproj", "{2ACC50B6-F8BB-4153-9409-47E220584143}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day15_DuelingGenerators", "Day15_DuelingGenerators\Day15_DuelingGenerators.fsproj", "{552CB13E-8E30-4304-9376-F6949DC61BBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{2ACC50B6-F8BB-4153-9409-47E220584143}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ACC50B6-F8BB-4153-9409-47E220584143}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2ACC50B6-F8BB-4153-9409-47E220584143}.Release|Any CPU.Build.0 = Release|Any CPU
+		{552CB13E-8E30-4304-9376-F6949DC61BBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{552CB13E-8E30-4304-9376-F6949DC61BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{552CB13E-8E30-4304-9376-F6949DC61BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{552CB13E-8E30-4304-9376-F6949DC61BBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
