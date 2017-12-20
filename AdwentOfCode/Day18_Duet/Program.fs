@@ -1,6 +1,7 @@
 ﻿open System
 open System.Collections.Generic
 open System.IO
+open System.Net.Mail
 
 // ------------------------------------------------------------------------------
 // ----------------------------------- Part 1 -----------------------------------
@@ -116,8 +117,12 @@ let modulo(param1:string, param2:string, registers:Dictionary<string, int64>) =
         addOrSetValue(param1, (registerValue % divider), registers)
 
 let jump(param1:string, param2:string, registers:Dictionary<string, int64>) =
-    let registerValue = getValue(param1, registers)
-    if registerValue = (int64)0 then
+    let mutable registerValue = (int64)0
+    if Int64.TryParse(param1) |> fst then
+        registerValue <- Convert.ToInt64(param1)
+    else
+        registerValue <- getValue(param1, registers)
+    if registerValue <= (int64)0 then
         (int64)0
     else if Int32.TryParse(param2) |> fst then
         Convert.ToInt64(param2)
@@ -219,8 +224,86 @@ part1
 //Once both of your programs have terminated (regardless of what caused them to do so), 
 //how many times did program 1 send a value?
 
+//Your puzzle answer was 5969.
+
+[<AllowNullLiteral>]
+type Program (instructions : string[][], logName : string) =
+    let _instructions = instructions
+    let _logName = logName
+    let mutable _parellProgram = null
+    let _registers = new Dictionary<string, int64>()
+    let mutable _currentStep = 0
+    let mutable _queue = new Queue<int64>()
+    let mutable _sendCount = 0
+
+    member this.SetParellProgram(parellProgram : Program) =
+        _parellProgram <- parellProgram
+
+    member this.AddToQueue(value : int64) = 
+        _queue.Enqueue(value)
+    
+    member this.Terminated =
+        _currentStep >= _instructions.Length
+
+    member this.SetRegister(register : string, value : int64) =
+        set(register, value.ToString(), _registers)
+
+    member this.Waiting =
+        _queue.Count = 0
+
+    member this.SendCount = 
+        _sendCount
+
+    member this.Execute =
+        let mutable waiting = false
+
+        while _currentStep < _instructions.Length && waiting <> true do
+            let mutable jumpValue = 1
+            if instructions.[_currentStep].[0] = "set" then
+                set(instructions.[_currentStep].[1], instructions.[_currentStep].[2], _registers)
+            else if instructions.[_currentStep].[0] = "add" then
+                add(instructions.[_currentStep].[1], instructions.[_currentStep].[2], _registers)
+            else if instructions.[_currentStep].[0] = "mul" then
+                multiply(instructions.[_currentStep].[1], instructions.[_currentStep].[2], _registers)
+            else if instructions.[_currentStep].[0] = "mod" then
+                modulo(instructions.[_currentStep].[1], instructions.[_currentStep].[2], _registers)
+            else if instructions.[_currentStep].[0] = "snd" then
+                _parellProgram.AddToQueue(getValue(instructions.[_currentStep].[1], _registers))
+                _sendCount <- _sendCount + 1
+            else if instructions.[_currentStep].[0] = "rcv" then
+                if _queue.Count <> 0 then
+                    let register = _instructions.[_currentStep].[1]
+                    addOrSetValue(register, _queue.Dequeue(), _registers)
+                    jumpValue <- 1
+                    waiting <- false
+                else
+                    jumpValue <- 0
+                    waiting <- true
+            else if instructions.[_currentStep].[0] = "jgz" then
+                let tmp = (int32)(jump(instructions.[_currentStep].[1], instructions.[_currentStep].[2], _registers))
+                if tmp <> 0 then
+                    jumpValue <- tmp
+
+            _currentStep <- _currentStep + jumpValue
+
 let part2 = 
-    printfn "Part2 result: "
+    let instructions = File.ReadAllLines "input.txt" |> Array.map (fun e -> e.Split [|' '|])
+    let program1 = new Program(instructions, "p1.txt")
+    let program2 = new Program(instructions, "p2.txt")
+
+    program1.SetParellProgram(program2)
+    program1.SetRegister("p", (int64)0)
+    program2.SetParellProgram(program1)
+    program2.SetRegister("p", (int64)1)
+
+    program1.Execute
+    program2.Execute
+
+    while ((program1.Terminated || program2.Waiting) && (program1.Waiting || program2.Terminated)) <> true do
+        program1.Execute
+        program2.Execute
+
+    printfn "Part2 result: %i" (program2.SendCount)
 
 part2
 
